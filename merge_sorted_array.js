@@ -19,7 +19,6 @@ var merge = function (nums1, m, nums2, n) {
       }
     }
   }
-  return nums1;
 };
 let nums1 = [4, 0, 0, 0, 0, 0];
 let m = 1;
