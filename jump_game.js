@@ -1,31 +1,13 @@
 var canJump = function (nums) {
-  let i = 0;
-  let array = new Array();
-  if (nums.length == 1 && nums[0] == 0) {
-    return true;
-  }
-  while (i < nums.length) {
-    array.push([nums[i], i]);
+  let farthest = 0;
 
-    if (array.at(-1)[0] === 0) {
-      if (array.at(-1)[0] + array.at(-1)[1] >= nums.length - 1) {
-        return true;
-      } else if (array.length > 0) {
-        while (array.at(-1)[0] === 0) {
-          array.pop();
-          if (array.length == 0) {
-            console.log("i was here");
-            return false;
-          }
-
-          console.log(array);
-          array[array.length - 1][0] -= 1;
-        }
-      } else return false;
-    }
-    i = array.at(-1)[0] + array.at(-1)[1];
+  for (let i = 0; i < nums.length; i++) {
+    if (i > farthest) return false; // If we can't reach this index, return false
+    farthest = Math.max(farthest, i + nums[i]); // Update the farthest reachable index
+    if (farthest >= nums.length - 1) return true; // If we can reach the last index, return true
   }
-  return true;
+
+  return false;
 };
 
 const nums1 = [3, 2, 1, 0, 4];
@@ -37,5 +19,7 @@ const nums = [
   7, 9, 3, 4, 6, 6, 5, 8, 9, 3, 4, 3, 7, 0, 4, 9, 0, 9, 8, 4, 3, 0, 7, 7, 1, 9,
   1, 9, 4, 9, 0, 1, 9, 5, 7, 7, 1, 5, 8, 2, 8, 2, 6, 8, 2, 2, 7, 5, 1, 7, 9, 6,
 ];
+const nums4 = [2, 3, 1, 1, 4];
+const nums5 = [2, 5, 0, 0];
 console.log(canJump(nums));
 const arr1 = [[0, 0]];
