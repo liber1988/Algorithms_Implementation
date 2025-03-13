@@ -1,23 +1,21 @@
 var jump = function (nums) {
   let farthest = 0;
-  let j = 1;
-  if (nums.length == 1) return (j = 0);
-  for (let i = 0; i < nums.length; i++) {
-    if (i > farthest)
-      return false; // If we can't reach this index, return false
-    else if (farthest < i + nums[i]) {
-      j++;
-      farthest = i + nums[i];
-    } else if (farthest >= i + nums[i]) j--;
-    else if (farthest >= nums.length - 1) {
-      return true;
-    } // If we can reach the last index, return true
-  }
+  let j = 0;
 
-  return j;
+  for (let i = 0; i < nums.length; i++) {
+    if (i > farthest) return false;
+    else if (farthest < i + nums[i]) {
+      if (farthest >= nums.length - 1) return j;
+      else {
+        j++;
+        farthest = i + nums[i];
+      }
+      if (farthest >= nums.length - 1) return j;
+    } else if (farthest > i + nums[i]) j--;
+  }
 };
-const nums1 = [3, 2, 1, 0, 4];
-const nums6 = [2, 3, 1, 1, 4];
+const nums6 = [3, 2, 1, 0, 4];
+const nums = [2, 3, 1, 1, 4];
 const nums3 = [2, 5, 0, 0];
 const nums2 = [
   2, 0, 6, 9, 8, 4, 5, 0, 8, 9, 1, 2, 9, 6, 8, 8, 0, 6, 3, 1, 2, 2, 1, 2, 6, 5,
@@ -27,6 +25,6 @@ const nums2 = [
 ];
 const nums4 = [2, 3, 1, 1, 4];
 const nums5 = [2, 5, 0, 0];
-const nums = [0];
+const nums1 = [0];
 console.log(jump(nums));
 const arr1 = [[0, 0]];
