@@ -1,30 +1,19 @@
 var lengthOfLongestSubstring = function (s) {
-  var j = 0;
-  var array = new Array();
-  var dic = {};
-  var subarr = [];
-  var lensubarr = 0;
-  array = s.split("");
-  for (let i = 0; i < array.length; i++) {
-    dic[array[i]] = 0;
+  let set = new Set(); // Store unique characters
+  let left = 0,
+    maxLength = 0;
 
-    if (Object.keys(dic).length - 1 < i - j) {
-      if (i - j > lensubarr) {
-        lensubarr = i - j - 1;
-        subarr = array.slice(j, i - 1);
-        for (let x = j; x < i; x++) {
-          if (array[x] === array[i]) {
-            j = x;
-          }
-        }
-        for (let xd = j; xd < i; xd++) {
-          dic[array[xd]] = 0;
-        }
-        console.log(dic, i, j);
-      }
+  for (let right = 0; right < s.length; right++) {
+    while (set.has(s[right])) {
+      // If duplicate found, move left pointer
+      set.delete(s[left]);
+      left++;
     }
+    set.add(s[right]); // Add new character to the set
+    maxLength = Math.max(maxLength, right - left + 1); // Update max length
   }
-  return subarr;
+
+  return maxLength;
 };
 s = "abcabcbb";
 console.log(lengthOfLongestSubstring(s));
