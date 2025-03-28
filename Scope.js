@@ -1,10 +1,3 @@
-function doSomething(b) {
-  console.log(b * 3);
-  (function doSomethingElse() {
-    var c = 3;
-    console.log(c, c, c, c);
-  })();
-}
-
-doSomething(2);
-var b;
+let i = 0;
+let j = 7;
+console.log(Math.floor((i + j) / 2));
