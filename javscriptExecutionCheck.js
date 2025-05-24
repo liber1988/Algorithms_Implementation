@@ -1,20 +1,23 @@
 var name = `steve`;
 var age = 28;
 function first() {
-  var a = "hello";
+  var a = "First Hello";
   second();
   var x = a + name;
+  console.log(x);
 }
 
 function second() {
-  var a = "Hello";
+  var b = "Second Hello";
   third();
-  var y = B + name;
+  var y = b + name;
+  console.log(y);
 }
 
 function third() {
-  var c = "Hey!";
+  var c = "Third Hello!";
   var z = c + name;
+  console.log(z);
 }
 
 first();
