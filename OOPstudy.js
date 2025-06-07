@@ -1,20 +1,16 @@
 function userCreator(name, score) {
-  const newUser = Object.create(userFunctionStore);
-  newUser.name = name;
-  newUser.score = score;
-  return newUser;
+  this.score = score;
+  this.name = name;
 }
 
-const userFunctionStore = {
-  increment: function () {
-    this.score++;
-  },
-  login: function () {
-    console.log("You're logged in ");
-  },
+userCreator.prototype.increment = function () {
+  this.score++;
+};
+userCreator.prototype.login = function () {
+  console.log("Login in was sunccessefully");
 };
 
-const user1 = userCreator("Phil", 4);
-const user2 = userCreator("Julia", 5);
+const user1 = new userCreator("Phil", 4);
+
 user1.increment();
 console.log(user1);
