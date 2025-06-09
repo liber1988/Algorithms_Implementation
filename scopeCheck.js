@@ -1,13 +1,10 @@
-"use strict";
-var teacher = "Kyle";
-
-function otherClass() {
-  teacher = "Suzy";
-  var topic = "React";
-  console.log("Welcome");
+{
+  teacher = "Kyle";
 }
 
-otherClass();
+var teacher = "RONe";
 
-console.log(teacher);
-console.log(topic);
+{
+  console.log(teacher);
+  teacher = "Suzy";
+}
